@@ -6,7 +6,7 @@
 /*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/06 19:24:08 by acolas            #+#    #+#             */
-/*   Updated: 2017/12/10 21:25:16 by acolas           ###   ########.fr       */
+/*   Updated: 2018/11/12 20:29:37 by acolas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	ft_get_unsigned(t_print *list, va_list *args)
 			|| ULONG(list->conversion))
 		unsign = va_arg(*args, unsigned long);
 	else if (USHORT(list->conversion) && (list->size == 'L'))
-		unsign = va_arg(*args, unsigned long long);
+		unsign = va_arg(*args, unsigned long double);
 	else if (USHORT(list->conversion) && (list->size == 'j'))
 		unsign = va_arg(*args, uintmax_t);
 	else if ((USHORT(list->conversion) && (list->size == 'z'))
