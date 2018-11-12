@@ -6,7 +6,7 @@
 /*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/06 19:24:08 by acolas            #+#    #+#             */
-/*   Updated: 2018/11/12 20:35:49 by acolas           ###   ########.fr       */
+/*   Updated: 2018/11/12 20:58:40 by acolas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	ft_get_arg(t_print *list, va_list *args)
 		ft_get_char(list, args);
 	else if (STRING(list->conversion))
 		ft_get_string(list, args);
+	else if (FLOAT(list->conversion))
+		ft_get_float(list, args);
 }
 
 void	ft_get_char(t_print *list, va_list *args)
@@ -108,6 +110,21 @@ void	ft_get_digit(t_print *list, va_list *args)
 		digit = va_arg(*args, intmax_t);
 	else if (LDECIMAL(list->conversion) && (list->size == 'z'))
 		digit = va_arg(*args, ssize_t);
+	else
+		digit = va_arg(*args, int);
+	(digit < 0) ? list->sign = 1 : 0;
+	digit = (digit < 0) ? (-digit) : digit;
+	list->buf = ft_itoa_base(digit, 10);
+}
+
+void ft_get_float(t_print *list, va_list *args)
+{
+	ssize_t digit;
+
+	if (FLOAT(list->conversion) && (list->size == 'l'))
+		digit = va_arg(*args, double);
+	else if (FLOAT(list->conversion == 'L'))
+		digit = va_arg(*args, double long);
 	else
 		digit = va_arg(*args, int);
 	(digit < 0) ? list->sign = 1 : 0;

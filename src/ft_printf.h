@@ -6,7 +6,7 @@
 /*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 16:46:07 by acolas            #+#    #+#             */
-/*   Updated: 2017/12/10 21:10:22 by acolas           ###   ########.fr       */
+/*   Updated: 2018/11/12 21:00:02 by acolas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define LDECIMAL(fm) (fm == 'd'|| fm == 'i')
 # define DECIMAL(fm) (fm == 'd'|| fm == 'D' || fm == 'i')
 # define UDECIMAL(fm) (fm == 'u'|| fm == 'U')
+# define FLOAT(fm) (fm == 'f')
 # define UOCT(fm) (fm == 'o'|| fm == 'O')
 # define UHEX(fm) (fm == 'x'|| fm == 'X')
 # define USHORT(fm) (fm == 'o'|| fm == 'u'|| fm == 'x'|| fm == 'X')
