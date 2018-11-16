@@ -6,7 +6,7 @@
 /*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 16:46:07 by acolas            #+#    #+#             */
-/*   Updated: 2018/11/12 21:00:02 by acolas           ###   ########.fr       */
+/*   Updated: 2018/11/16 18:15:17 by acolas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,6 @@ void			ft_print_num_wchar_zero(t_print *list, size_t *ret);
 void			ft_print_null_char(t_print *list, size_t *ret);
 void			ft_print_right_pref(t_print *list, size_t *ret);
 void			free_list(t_print **list);
+void			ft_get_float(t_print *list, va_list *args);
 
 #endif

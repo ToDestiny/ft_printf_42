@@ -6,7 +6,7 @@
 /*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/06 19:24:08 by acolas            #+#    #+#             */
-/*   Updated: 2018/11/12 20:58:40 by acolas           ###   ########.fr       */
+/*   Updated: 2018/11/16 19:01:49 by acolas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,21 @@
 
 void	ft_get_arg(t_print *list, va_list *args)
 {
-	if (DECIMAL(list->conversion))
+
+	printf("[%c]", list->conversion);
+	printf("[%d]", list->flag);
+	printf("[%d]", list->sign);
+	printf("[%c]", list->size);
+	printf("[%c]", list->conversion);
+	printf("[%c]", list->conversion);
+	printf("[%c]", list->conversion);
+	printf("[%c]", list->conversion);
+	printf("[%c]", list->conversion);
+	printf("[%c]", list->conversion);
+	
+	if (FLOAT(list->conversion))
+		ft_get_float(list, args);
+	else if (DECIMAL(list->conversion))
 		ft_get_digit(list, args);
 	else if (UNSIGN(list->conversion))
 		ft_get_unsigned(list, args);
@@ -22,8 +36,6 @@ void	ft_get_arg(t_print *list, va_list *args)
 		ft_get_char(list, args);
 	else if (STRING(list->conversion))
 		ft_get_string(list, args);
-	else if (FLOAT(list->conversion))
-		ft_get_float(list, args);
 }
 
 void	ft_get_char(t_print *list, va_list *args)
@@ -117,17 +129,12 @@ void	ft_get_digit(t_print *list, va_list *args)
 	list->buf = ft_itoa_base(digit, 10);
 }
 
+
 void ft_get_float(t_print *list, va_list *args)
 {
-	ssize_t digit;
-
-	if (FLOAT(list->conversion) && (list->size == 'l'))
-		digit = va_arg(*args, double);
-	else if (FLOAT(list->conversion == 'L'))
-		digit = va_arg(*args, double long);
-	else
-		digit = va_arg(*args, int);
-	(digit < 0) ? list->sign = 1 : 0;
-	digit = (digit < 0) ? (-digit) : digit;
-	list->buf = ft_itoa_base(digit, 10);
+	printf("camenbert");
+	write(1, "bite", 4);
+	write (1, list->buf, list->size);
+	(void)args;
 }
+

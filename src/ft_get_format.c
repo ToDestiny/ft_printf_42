@@ -6,7 +6,7 @@
 /*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/06 19:24:08 by acolas            #+#    #+#             */
-/*   Updated: 2018/11/12 18:13:03 by acolas           ###   ########.fr       */
+/*   Updated: 2018/11/16 19:08:33 by acolas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 const char		*ft_get_format(t_print *list, const char *fm)
 {
+	
+	printf("[pouet %c]", list->conversion);
 	while (*fm && ft_strchr("-+ #0.123456789lhzj", *fm))
 	{
 		while (FLAG(*fm))
@@ -41,6 +43,7 @@ const char		*ft_get_format(t_print *list, const char *fm)
 
 void			ft_check_converse(t_print *list, const char **fm)
 {
+	printf("[pouet %c]", list->conversion);
 	if (**fm && CONVERSE(**fm))
 		list->conversion = **fm;
 	else if (*fm && !(CONVERSE(**fm)))

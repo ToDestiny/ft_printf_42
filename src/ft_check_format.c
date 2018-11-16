@@ -6,7 +6,7 @@
 /*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/06 19:24:08 by acolas            #+#    #+#             */
-/*   Updated: 2018/01/11 16:26:46 by acolas           ###   ########.fr       */
+/*   Updated: 2018/11/16 19:16:46 by acolas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	ft_check_prefix(t_print *list)
 	char *tmp;
 
 	if (DECIMAL(list->conversion))
+		ft_check_sign(list);
+	else if (FLOAT(list->conversion))
 		ft_check_sign(list);
 	else if (UOCT(list->conversion) && SHARP(list->flag) && *list->buf != '0')
 		*(list->prefix) = '0';
