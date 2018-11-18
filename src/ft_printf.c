@@ -6,7 +6,7 @@
 /*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/06 19:24:08 by acolas            #+#    #+#             */
-/*   Updated: 2018/11/16 19:10:48 by acolas           ###   ########.fr       */
+/*   Updated: 2018/11/17 15:24:34 by acolas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int		ft_if_percent(va_list *args, const char **fm,
 	else
 	{
 		*list = ft_new_list(*list);
-		printf("pouet 2[%c]", (*list)->conversion);
 		*fm = ft_get_format(*list, *fm);
+		printf("pouet 2[%c]", (*list)->conversion);
 		*ret = go_push_it(*list, args, *ret);
 		free_list(list);
 	}

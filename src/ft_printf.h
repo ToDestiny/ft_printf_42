@@ -6,7 +6,7 @@
 /*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 16:46:07 by acolas            #+#    #+#             */
-/*   Updated: 2018/11/16 18:15:17 by acolas           ###   ########.fr       */
+/*   Updated: 2018/11/18 18:07:54 by acolas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 # define FLAG(fm) (fm == '#'|| fm == '0'|| fm == '-' || fm == '+' || fm == 32)
 # define LDECIMAL(fm) (fm == 'd'|| fm == 'i')
-# define DECIMAL(fm) (fm == 'd'|| fm == 'D' || fm == 'i')
+# define DECIMAL(fm) (fm == 'd'|| fm == 'D' || fm == 'i'|| fm == 'f')
 # define UDECIMAL(fm) (fm == 'u'|| fm == 'U')
 # define FLOAT(fm) (fm == 'f')
 # define UOCT(fm) (fm == 'o'|| fm == 'O')
