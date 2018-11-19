@@ -6,7 +6,7 @@
 #    By: acolas <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/18 14:42:35 by acolas            #+#    #+#              #
-#    Updated: 2017/09/13 15:40:48 by acolas           ###   ########.fr        #
+#    Updated: 2018/11/19 20:59:06 by acolas           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ SRC = ft_printf.c \
 	ft_print_arg.c \
 	ft_print_wchar.c \
 	ft_print_zero_arg.c \
+	ft_print_float.c \
+	ft_ftoa.c \
 	
 
 CC = gcc

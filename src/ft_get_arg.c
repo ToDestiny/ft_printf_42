@@ -6,7 +6,7 @@
 /*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/06 19:24:08 by acolas            #+#    #+#             */
-/*   Updated: 2018/11/18 18:52:08 by acolas           ###   ########.fr       */
+/*   Updated: 2018/11/19 20:59:01 by acolas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,16 @@
 void	ft_get_arg(t_print *list, va_list *args)
 {
 
-	 if (DECIMAL(list->conversion))
+	 if (DECIMAL(list->conversion) && (list->conversion != 'f'))
 		ft_get_digit(list, args);
+	else if (DECIMAL(list->conversion) && (list->conversion == 'f'))
+		ft_get_float(list, args);
 	else if (UNSIGN(list->conversion))
 		ft_get_unsigned(list, args);
 	else if (SYMB(list->conversion))
 		ft_get_char(list, args);
 	else if (STRING(list->conversion))
 		ft_get_string(list, args);
-
 }
 
 void	ft_get_char(t_print *list, va_list *args)
@@ -110,15 +111,24 @@ void	ft_get_digit(t_print *list, va_list *args)
 		digit = va_arg(*args, intmax_t);
 	else if (LDECIMAL(list->conversion) && (list->size == 'z'))
 		digit = va_arg(*args, ssize_t);
-	else if (FLOAT(list->conversion) && (list->size == 'l'))
-		digit = va_arg(*args, long);
-	else if (FLOAT(list->conversion) && (list->size == 'L'))
-		digit = va_arg(*args, long double);
-	else if (FLOAT(list->conversion) && (list->conversion == 'f'))
-		digit = va_arg(*args, double);
 	else
 		digit = va_arg(*args, int);
 	(digit < 0) ? list->sign = 1 : 0;
 	digit = (digit < 0) ? (-digit) : digit;
 	list->buf = ft_itoa_base(digit, 10);
+}
+
+void ft_get_float(t_print *list, va_list *args)
+{
+	ssize_t digit;
+	
+	if (FLOAT(list->conversion) && (list->size == 'l'))
+		digit = va_arg(*args, long);
+	else if (FLOAT(list->conversion) && (list->size == 'L'))
+		digit = va_arg(*args, long double);
+	else
+		digit = va_arg(*args, double);
+	(digit < 0) ? list->sign = 1 : 0;
+	digit = (digit < 0) ? (-digit) : digit;
+	list->buf = ft_ftoa(digit, 4);
 }

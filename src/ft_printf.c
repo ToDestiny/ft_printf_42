@@ -6,7 +6,7 @@
 /*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/06 19:24:08 by acolas            #+#    #+#             */
-/*   Updated: 2018/11/17 15:24:34 by acolas           ###   ########.fr       */
+/*   Updated: 2018/11/19 16:35:14 by acolas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ size_t	go_push_it(t_print *list, va_list *args, size_t ret)
 	else if (*(list->buf) == '0' && (NUM(list->conversion))
 		&& list->dot && !(list->precision) && !list->width)
 		;
+	else if (list->conversion == 'f')
+		ft_print_float(list, &ret);
 	else
 		ft_print_arg(list, &ret);
 	return (ret);
