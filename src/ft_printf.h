@@ -6,7 +6,7 @@
 /*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 16:46:07 by acolas            #+#    #+#             */
-/*   Updated: 2018/11/19 19:00:31 by acolas           ###   ########.fr       */
+/*   Updated: 2018/12/04 14:25:52 by acolas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,9 @@ void			ft_print_right_pref(t_print *list, size_t *ret);
 void			free_list(t_print **list);
 void			ft_get_float(t_print *list, va_list *args);
 void			ft_print_float(t_print *list, size_t *ret);
-char			*ft_ftoa(float n, int precision);
+char			*ft_ftoa(double n);
 int				ft_iterative_power(int n, int power);
+char			*ft_itoa(int n);
+char			*ft_strcat(char *dest, const char *src);
 
 #endif

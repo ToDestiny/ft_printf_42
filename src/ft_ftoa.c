@@ -1,35 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ftoa.c                                          :+:      :+:    :+:   */
+/*   ft_dtoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 18:14:25 by acolas            #+#    #+#             */
-/*   Updated: 2018/11/19 18:58:34 by acolas           ###   ########.fr       */
+/*   Updated: 2018/11/20 18:33:48 by acolas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <printf.h>
 
-char	*ft_ftoa(float n, int precision)
+static int	ft_count_n(int n)
 {
-	int i;
-	int ipart;
-	float fpart;
-	char res[1000];
+	int		count;
 
-	if (precision == 0)
-		precision = 6;
-	ipart = (int)n;
-	fpart = n - (float)ipart;
-	i = ft_itoa_base(ipart, res, 0);
-	if (precision != 0)
+	count = 0;
+	if (n == 0)
+		count++;
+	if (n < 0)
 	{
-		res[i] = '.';
-		fpart = fpart * ft_iterative_power(10, precision);
-
-		ft_itoa_base((int)fpart, res + i + 1, precision);
+		n = -n;
+		count++;
 	}
-	return (res[]);
+	while (n)
+	{
+		n = n / 10;
+		count++;
+	}
+	return (count);
+}
+
+char		*ft_dtoa(double n)
+{
+	size_t ipart;
+	float fpart;
+	char *str;
+	char *str2;
+	int i;
+
+	i = 0;
+	ipart = 0;
+	ipart = (int)n;
+	i = ft_count_n(n);
+	fpart = n - (double)ipart;
+	str = ft_itoa(ipart);
+ 	str[i] = '.';
+	fpart = fpart * ft_iterative_power(10, 6);
+	str2 = ft_itoa(fpart);
+	str = ft_strcat(str, str2);
+
+	printf("str = %s", str);
+	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/06 19:24:08 by acolas            #+#    #+#             */
-/*   Updated: 2018/11/19 20:59:01 by acolas           ###   ########.fr       */
+/*   Updated: 2018/11/20 15:46:11 by acolas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,5 +130,5 @@ void ft_get_float(t_print *list, va_list *args)
 		digit = va_arg(*args, double);
 	(digit < 0) ? list->sign = 1 : 0;
 	digit = (digit < 0) ? (-digit) : digit;
-	list->buf = ft_ftoa(digit, 4);
+	list->buf = ft_dtoa(digit);
 }
