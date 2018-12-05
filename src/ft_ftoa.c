@@ -6,30 +6,55 @@
 /*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 18:14:25 by acolas            #+#    #+#             */
-/*   Updated: 2018/12/04 16:42:27 by acolas           ###   ########.fr       */
+/*   Updated: 2018/12/05 16:25:20 by acolas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <printf.h>
 
-static int	ft_count_n(int n)
-{
-	int		count;
+char		*ft_strnew(size_t size);
+size_t		ft_strlen(const char *str);	
 
-	count = 0;
-	if (n == 0)
-		count++;
-	if (n < 0)
+char		*float_output(char	*val, int dot, int end)
+{	
+	char	*tmp;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	tmp = ft_strnew(ft_strlen(val) + 1);
+	while (val[i] != '\0')
 	{
-		n = -n;
-		count++;
+		tmp[j++] = val[i];
+		if (i == dot - 1 && end > 0)
+			tmp[j++] = '.';
+		if (i >= end)
+		{
+			tmp[j] = '\0';
+			break;
+		}
+		i++;
 	}
-	while (n)
+	return (tmp);
+}
+
+long		float_to_int(long double d, int prec)
+{
+	int neg;
+	int i;
+
+	i = 0;
+	neg = d < 0 ? -1 : 1;
+	d *= neg;
+	while (i < prec)
 	{
-		n = n / 10;
-		count++;
+		d *= 10;
+		i++;
 	}
-	return (count);
+	d += 0.5;
+	d *= neg;
+	return ((long int)d);
 }
 
 char		*ft_ftoa(double d)
