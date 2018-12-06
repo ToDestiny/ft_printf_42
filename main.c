@@ -1,12 +1,21 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/12/05 18:19:29 by acolas            #+#    #+#             */
+/*   Updated: 2018/12/06 20:06:07 by acolas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	ft_printf(const char *fm, ...);
+#include <stdio.h>
+#include "./src/ft_printf.h"
+
+int		ft_printf(const char *fm, ...);
 
 int main(void) {
-	ft_printf("%d\n", 6);
-	ft_printf("%f\n", 340);
-	printf("%f\n", 1245.493758*2);
-	printf("%7.f\n", 1.f/3*4);
-	printf("%f\n", 0.0001*10000);
-	printf("%7f\n", 1.f/3*4);
+	ft_printf("%.2f\n", 123.123);
+	printf("%.2f\n", 123.123);
 }
