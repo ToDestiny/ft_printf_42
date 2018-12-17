@@ -6,7 +6,7 @@
 /*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/06 19:24:08 by acolas            #+#    #+#             */
-/*   Updated: 2018/11/17 17:13:34 by acolas           ###   ########.fr       */
+/*   Updated: 2018/12/17 11:47:36 by acolas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 const char		*ft_get_format(t_print *list, const char *fm)
 {
 	
-	while (*fm && ft_strchr("-+ #0.123456789lhzj", *fm))
+	while (*fm && ft_strchr("-+ #0.123456789lLhzj", *fm))
 	{
 		while (FLAG(*fm))
 			ft_get_flag(list, *(fm++));
@@ -32,7 +32,7 @@ const char		*ft_get_format(t_print *list, const char *fm)
 			while (ft_isdigit((*(++fm))))
 				list->precision = (list->precision * 10) + (*fm) - '0';
 		}
-		while (*fm && ft_strchr("lhzj", *fm))
+		while (*fm && ft_strchr("lLhzj", *fm))
 			ft_get_size(list, *(fm++));
 	}
 	ft_check_size(list);

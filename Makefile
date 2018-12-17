@@ -6,11 +6,11 @@
 #    By: acolas <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/18 14:42:35 by acolas            #+#    #+#              #
-#    Updated: 2018/11/19 20:59:06 by acolas           ###   ########.fr        #
+#    Updated: 2018/12/17 14:19:04 by acolas           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+NAME = libprintf.a
 SRC_DIR = ./src
 SRC = ft_printf.c \
 	ft_check_format.c \
@@ -20,13 +20,12 @@ SRC = ft_printf.c \
 	ft_print_arg.c \
 	ft_print_wchar.c \
 	ft_print_zero_arg.c \
-	ft_print_float.c \
 	ft_ftoa.c \
-	
+	ft_get_float.c \
 
 CC = gcc
 OBJ = $(SRC:%.c=%.o)
-CFLAGS = -Wall -Werror -Wextra -c
+CFLAGS = -Wall -Werror -Wextra -c -fsanitize=address -g
 RM = rm -f
 DIR_LIB	= libft
 LIBFT	= $(DIR_LIB)/libft.a

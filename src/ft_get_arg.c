@@ -6,7 +6,7 @@
 /*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/06 19:24:08 by acolas            #+#    #+#             */
-/*   Updated: 2018/12/05 19:17:05 by acolas           ###   ########.fr       */
+/*   Updated: 2018/12/17 15:50:46 by acolas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,26 +116,4 @@ void	ft_get_digit(t_print *list, va_list *args)
 	(digit < 0) ? list->sign = 1 : 0;
 	digit = (digit < 0) ? (-digit) : digit;
 	list->buf = ft_itoa_base(digit, 10);
-}
-
-void ft_get_float(t_print *list, va_list *args)
-{
-	ssize_t digit;
-	double	num;
-	char	*nb;
-	
-	if (FLOAT(list->conversion) && (list->size == 'l'))
-		digit = va_arg(*args, long);
-	else if (FLOAT(list->conversion) && (list->size == 'L'))
-		digit = va_arg(*args, long double);
-	else
-		digit = va_arg(*args, double);
-	(digit < 0) ? list->sign = 1 : 0;
-	digit = (digit < 0) ? (-digit) : digit;
-	num = float_to_int(digit, 6);
-	printf("get float num : %f\n", num);
-	nb = ft_ftoa(num);
-	printf("get float nb : %s\n", nb);
-	list->buf = float_output(nb ,3, 9);
-	printf("%s\n",list->buf);
 }
