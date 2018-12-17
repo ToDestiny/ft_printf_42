@@ -6,7 +6,7 @@
 /*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 18:14:25 by acolas            #+#    #+#             */
-/*   Updated: 2018/12/17 15:54:52 by acolas           ###   ########.fr       */
+/*   Updated: 2018/12/17 18:07:53 by acolas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,10 @@ int			digit_int(long int num)
 		len++;
 		temp *= 10;
 	}
-	printf("len : %d\n", len);
 	return len;
 }
 
-char		*float_output(t_print *list, char	*val, int dot, int end)
+char		*float_output(char	*val, int dot, int end)
 {	
 	char	*tmp;
 	int		i;
@@ -81,20 +80,22 @@ long		float_to_int(t_print *list, long double d, int prec)
 	return ((long int)d);
 }
 
-char		*ft_ftoa(double d)
+char		*ft_ftoa(t_print *list, double d)
 {
 	char		*val;
 	long int	tmp;
 	int			len;
 	int			neg;
+	int			i;
 
+	i = list->precision;
 	neg = d < 0 ? -1 : 1;
 	len = d < 0 ? 1 : 0;
 	d *= neg;
 	tmp = (long int)d;
 	while (tmp > 0 && len++ >= 0)
-		tmp /= 10;
-	while (d - (long int)d != 0 && len++ >= 0)
+		tmp /= 10;	
+	while (d - (long int)d != 0 && len++ >= 0 && i-- > 0)
 		d *= 10;
 	val = ft_strnew(len);
 	while (--len >= 0)

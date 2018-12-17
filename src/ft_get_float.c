@@ -6,7 +6,7 @@
 /*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 11:18:51 by acolas            #+#    #+#             */
-/*   Updated: 2018/12/17 15:50:43 by acolas           ###   ########.fr       */
+/*   Updated: 2018/12/17 18:06:16 by acolas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -30,7 +30,7 @@ void	ft_get_float(t_print *list, va_list *args)
 		num = float_to_int(list, digit, list->precision);
 	else 
 		num = float_to_int(list, digit, 6);
-	nb = ft_ftoa(num);
+	nb = ft_ftoa(list, num);
 	printf("dot : %d\n", list->dot);
-	list->buf = float_output(list, nb, list->dot, ft_strlen(nb));
+	list->buf = float_output(nb, list->dot, ft_strlen(nb));
 }
