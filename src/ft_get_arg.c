@@ -6,7 +6,7 @@
 /*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/06 19:24:08 by acolas            #+#    #+#             */
-/*   Updated: 2018/12/17 15:50:46 by acolas           ###   ########.fr       */
+/*   Updated: 2018/12/17 19:17:14 by acolas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	ft_get_arg(t_print *list, va_list *args)
 {
-
-	 if (DECIMAL(list->conversion) && (list->conversion != 'f'))
+	if (DECIMAL(list->conversion) && (list->conversion != 'f'))
 		ft_get_digit(list, args);
 	else if (DECIMAL(list->conversion) && (list->conversion == 'f'))
 		ft_get_float(list, args);

@@ -6,9 +6,10 @@
 /*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 11:18:51 by acolas            #+#    #+#             */
-/*   Updated: 2018/12/17 18:06:16 by acolas           ###   ########.fr       */
+/*   Updated: 2018/12/17 19:42:51 by acolas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void	ft_get_float(t_print *list, va_list *args)
@@ -28,9 +29,9 @@ void	ft_get_float(t_print *list, va_list *args)
 	digit = (digit < 0) ? (-digit) : digit;
 	if (list->precision)
 		num = float_to_int(list, digit, list->precision);
-	else 
+	else
 		num = float_to_int(list, digit, 6);
-	nb = ft_ftoa(list, num);
+	nb = ft_ftoa(num, list->precision);
 	printf("dot : %d\n", list->dot);
-	list->buf = float_output(nb, list->dot, ft_strlen(nb));
+	list->buf = float_output(nb, list->dot, ft_strlen(nb), 0);
 }

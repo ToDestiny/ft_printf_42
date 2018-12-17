@@ -6,7 +6,7 @@
 /*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/06 19:24:08 by acolas            #+#    #+#             */
-/*   Updated: 2018/12/17 15:42:35 by acolas           ###   ########.fr       */
+/*   Updated: 2018/12/17 19:09:36 by acolas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int		ft_printf(const char *fm, ...)
 	va_list	args;
 
 	ret = 0;
-
 	va_start(args, fm);
 	if (!*fm)
 		return (END);

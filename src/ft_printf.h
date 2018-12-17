@@ -6,7 +6,7 @@
 /*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 16:46:07 by acolas            #+#    #+#             */
-/*   Updated: 2018/12/17 18:06:57 by acolas           ###   ########.fr       */
+/*   Updated: 2018/12/17 19:42:30 by acolas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ typedef struct	s_print
 	size_t	len_p;
 	size_t	len_w;
 	int		l;
-	int		L;
 	int		h;
 	int		z;
 	int		j;
@@ -98,11 +97,11 @@ void			ft_print_null_char(t_print *list, size_t *ret);
 void			ft_print_right_pref(t_print *list, size_t *ret);
 void			free_list(t_print **list);
 void			ft_get_float(t_print *list, va_list *args);
-char			*ft_ftoa(t_print *list, double d);
+char			*ft_ftoa(double d, int i);
 int				ft_iterative_power(int n, int power);
 char			*ft_itoa(int n);
 char			*ft_strcat(char *dest, const char *src);
-char			*float_output(char *val, int dot, int end);
+char			*float_output(char *val, int dot, int end, int i);
 long			float_to_int(t_print *list, long double d, int prec);
 
 #endif

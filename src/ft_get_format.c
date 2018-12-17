@@ -6,7 +6,7 @@
 /*   By: acolas <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/06 19:24:08 by acolas            #+#    #+#             */
-/*   Updated: 2018/12/17 11:47:36 by acolas           ###   ########.fr       */
+/*   Updated: 2018/12/17 19:15:27 by acolas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 const char		*ft_get_format(t_print *list, const char *fm)
 {
-	
 	while (*fm && ft_strchr("-+ #0.123456789lLhzj", *fm))
 	{
 		while (FLAG(*fm))
