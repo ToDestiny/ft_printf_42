@@ -10,9 +10,21 @@
 #                                                                              #
 # **************************************************************************** #
 
+CC = gcc
+
 NAME = libprintf.a
-SRC_DIR = ./src
-SRC = ft_printf.c \
+
+FLAGS = -Wall -Wextra -Werror
+
+LIBFT = libft
+
+DIR_S = src
+
+DIR_O = obj
+
+HEADER = includes
+
+SOURCES = ft_printf.c \
 	ft_check_format.c \
 	ft_get_arg.c \
 	ft_get_format.c \
@@ -23,29 +35,30 @@ SRC = ft_printf.c \
 	ft_ftoa.c \
 	ft_get_float.c \
 
-CC = gcc
-OBJ = $(SRC:%.c=%.o)
-CFLAGS = -Wall -Werror -Wextra -c -fsanitize=address -g
-RM = rm -f
-DIR_LIB	= libft
-LIBFT	= $(DIR_LIB)/libft.a
+SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 
-all : $(NAME)
+OBJS = $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))
 
-$(NAME): $(LIBFT)
-	@$(CC) $(CFLAGS) -c $(addprefix $(SRC_DIR)/,$(SRC))
-	@ar -rc $(NAME) $(OBJ) ./libft/*.o
+all: $(NAME)
 
-$(LIBFT):
-	@make -C $(DIR_LIB)
+$(NAME): $(OBJS)
+	@make -C $(LIBFT)
+	@cp libft/libft.a ./$(NAME)
+	@ar rc $(NAME) $(OBJS)
+	@ranlib $(NAME)
+
+$(DIR_O)/%.o: $(DIR_S)/%.c $(HEADER)/ft_printf.h
+	@mkdir -p obj
+	@$(CC) $(FLAGS) -I $(HEADER) -o $@ -c $<
 
 clean:
-	@make clean -C $(DIR_LIB)
-	@$(RM) $(OBJ)
+	@rm -f $(OBJS)
+	@rm -rf $(DIR_O)
+	@make clean -C $(LIBFT)
 
 fclean: clean
-	@make fclean -C $(DIR_LIB) 
-	@$(RM) $(NAME) $(HEADER)
+	@rm -f $(NAME)
+	@make fclean -C $(LIBFT)
 
 re: fclean all
 

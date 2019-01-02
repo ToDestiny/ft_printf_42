@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "./src/ft_printf.h"
+#include "./includes/ft_printf.h"
 
 int		ft_printf(const char *fm, ...);
 
